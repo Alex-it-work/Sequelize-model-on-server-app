@@ -13,7 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.13",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
     "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
   }
 }
