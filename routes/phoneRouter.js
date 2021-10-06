@@ -4,9 +4,8 @@ const phoneRouter = Router();
 
 phoneRouter.get('/', phoneController.getPhones);
 phoneRouter.get('/:phoneId', phoneController.getPhoneById);
-phoneRouter.post('/', phoneController.postPhone);
-phoneRouter.patch('/:phoneId', phoneController.patchPhone);
-phoneRouter.put('/:phoneId', phoneController.putPhone);
+phoneRouter.post('/', phoneController.createPhone);
+phoneRouter.patch('/:phoneId', phoneController.updatePhone);
 phoneRouter.delete('/:phoneId', phoneController.deletePhone);
 
 module.exports = phoneRouter;
