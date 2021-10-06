@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       ram: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: { is: /^*[0-9]*/ },
+        validate: { is: /^\d+$/ },
       },
       cpu: { type: DataTypes.STRING, allowNull: false },
       diagonal: { type: DataTypes.FLOAT, allowNull: false },
