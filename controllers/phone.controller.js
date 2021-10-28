@@ -10,6 +10,8 @@ module.exports.getPhones = async (req, res, next) => {
       },
       limit: 5,
     });
+
+    res.status(200).send({ data: foundPhones });
   } catch (e) {
     next(e);
   }
