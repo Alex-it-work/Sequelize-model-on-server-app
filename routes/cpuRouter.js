@@ -3,6 +3,6 @@ const { cpuController } = require('./../controllers');
 
 const cpuRouter = Router();
 
-cpuRouter.get('/', cpuRouter.getCPUs);
+cpuRouter.get('/', cpuController.getCPUs);
 
 module.exports = cpuRouter;

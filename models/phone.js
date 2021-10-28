@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate (models) {
-      Phone.belongsTo(models.cpu, {
+      Phone.belongsTo(models.CPU, {
         foreignKey: 'CPU_id',
       });
     }

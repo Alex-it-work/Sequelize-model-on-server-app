@@ -14,7 +14,7 @@ Content-Type: application/json
     "brand":"Xiaomi",
     "manufactureYear":"2020",
     "ram": 4,
-    "cpu":"MediaTek",
+    "CPU_id": 1,
     "diagonal":6.53,
     "nfc": false
 }

@@ -1,21 +1,21 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class cpu extends Model {
+  class CPU extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate (models) {
-      cpu.hasMany(models.Phone, {
+      CPU.hasMany(models.Phone, {
         foreignKey: 'CPU_id',
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT',
       });
     }
   }
-  cpu.init(
+  CPU.init(
     {
       name: { type: DataTypes.STRING, allowNull: false },
       AnTuTu: { type: DataTypes.INTEGER },
@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'cpu',
+      modelName: 'CPU',
     }
   );
-  return cpu;
+  return CPU;
 };
