@@ -16,6 +16,7 @@ module.exports.getPhones = async (req, res, next) => {
     next(e);
   }
 };
+
 module.exports.getPhoneById = async (req, res, next) => {
   const {
     params: { phoneId },
@@ -38,6 +39,7 @@ module.exports.getPhoneById = async (req, res, next) => {
     next(e);
   }
 };
+
 module.exports.createPhone = async (req, res, next) => {
   const { body } = req;
 
@@ -55,5 +57,46 @@ module.exports.createPhone = async (req, res, next) => {
     next(e);
   }
 };
-module.exports.updatePhone = async (req, res) => {};
-module.exports.deletePhone = async (req, res) => {};
+
+module.exports.updatePhone = async (req, res, next) => {
+  const {
+    params: { phoneId },
+    body,
+  } = req;
+
+  try {
+    const [updatedPhoneCount, [updatedPhone]] = await Phone.update(body, {
+      where: { id: phoneId },
+      returning: true,
+    });
+
+    if (updatedPhoneCount > 0) {
+      const preparedPhone = _.omit(updatedPhone.get(), [
+        'id',
+        'createdAt',
+        'updatedAt',
+      ]);
+      return res.status(204).send();
+    }
+    res.status(404).send('Phone Not Found');
+  } catch (e) {
+    next(e);
+  }
+};
+
+module.exports.deletePhone = async (req, res, next) => {
+  const {
+    params: { phoneId },
+  } = req;
+
+  try {
+    const deletedPhonesCount = await Phone.destroy({ where: { id: phoneId } });
+
+    if (deletedPhonesCount > 0) {
+      return res.status(204).send();
+    }
+    res.status(404).send('Phone not found');
+  } catch (e) {
+    next(e);
+  }
+};
